@@ -92,7 +92,7 @@ endforeach()
 
 # HIP flags workaround while target_compile_options does not work
 list(APPEND HIP_HIPCC_FLAGS "-Wno-unused-command-line-argument -fPIE -fopenmp")
-list(APPEND CMAKE_HOST_FLAGS "--unresolved-symbols=ignore-in-shared-libs")
+list(APPEND CMAKE_HOST_FLAGS "")
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   list(APPEND HIP_HIPCC_FLAGS "-g -ggdb")
@@ -173,6 +173,7 @@ set_target_properties(rochpl PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY
 set_target_properties(rochpl PROPERTIES LINKER_LANGUAGE CXX)
 
 target_link_options(rochpl PRIVATE "-fopenmp")
+target_link_options(rochpl PRIVATE "-Wl,--unresolved-symbols=ignore-in-shared-libs")
 
 set_target_properties(rochpl PROPERTIES HIP_ARCHITECTURES "${DEFAULT_AMDGPU_TARGETS}")
 
