@@ -148,7 +148,6 @@ target_include_directories(rochpl
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
                            $<BUILD_INTERFACE:${HIP_INCLUDE_DIRS}>
-                           $<BUILD_INTERFACE:${HPL_BLAS_DIR}>
                            $<BUILD_INTERFACE:${HPL_MPI_DIR}/include>
                            $<BUILD_INTERFACE:${ROCM_PATH}/include/roctracer>)
 
