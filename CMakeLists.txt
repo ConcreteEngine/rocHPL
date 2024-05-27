@@ -92,7 +92,7 @@ endforeach()
 
 # HIP flags workaround while target_compile_options does not work
 list(APPEND HIP_HIPCC_FLAGS "-Wno-unused-command-line-argument -fPIE -fopenmp")
-list(APPEND CMAKE_HOST_FLAGS "-Wl --unresolved-symbols=ignore-in-shared-libs")
+list(APPEND CMAKE_HOST_FLAGS "--unresolved-symbols=ignore-in-shared-libs")
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   list(APPEND HIP_HIPCC_FLAGS "-g -ggdb")
