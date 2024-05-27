@@ -102,24 +102,7 @@ else()
   list(APPEND CMAKE_HOST_FLAGS "-O3;-march=native")
 endif()
 
-# GPU arch targets
-set(TARGETS "gfx900;gfx906")
-if(HIP_VERSION VERSION_GREATER_EQUAL "3.7")
-  set(TARGETS "${TARGETS};gfx908")
-endif()
-if(HIP_VERSION VERSION_GREATER_EQUAL "4.3")
-  set(TARGETS "${TARGETS};gfx90a")
-endif()
-if (HIP_VERSION VERSION_GREATER_EQUAL "5.3")
-  set(TARGETS "${TARGETS};gfx940")
-endif()
-if (HIP_VERSION VERSION_GREATER_EQUAL "5.7")
-  set(TARGETS "${TARGETS};gfx941;gfx942")
-endif()
-
-foreach(target ${TARGETS})
-  list(APPEND HIP_HIPCC_FLAGS "--offload-arch=${target}")
-endforeach()
+list(APPEND HIP_HIPCC_FLAGS "--offload-arch=gfx1030")
 
 # Target executable
 hip_add_executable(rochpl ${rochpl_source} ${rochpl_device_source})
