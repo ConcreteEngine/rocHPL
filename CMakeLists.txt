@@ -59,6 +59,7 @@ project(rochpl LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_SKIP_RPATH ON)
 
 # Build options
 option(HPL_DEBUG "Compile with modest debugging turned on" OFF)
@@ -147,6 +148,7 @@ target_include_directories(rochpl
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
                            $<BUILD_INTERFACE:${HIP_INCLUDE_DIRS}>
+                           $<BUILD_INTERFACE:${HPL_BLAS_DIR}>
                            $<BUILD_INTERFACE:${HPL_MPI_DIR}/include>
                            $<BUILD_INTERFACE:${ROCM_PATH}/include/roctracer>)
 
